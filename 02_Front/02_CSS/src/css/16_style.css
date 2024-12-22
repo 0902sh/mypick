@@ -1,0 +1,54 @@
+.box1 {
+    width: 200px;
+    height: 100px;
+    background-color: rebeccapurple;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.box2 {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(51, 153, 119);
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.box3, .box4, .box5 {
+    width: 100px;
+    height: 100px;
+}
+
+.box3 { background-color: greenyellow;}
+.box4 { background-color: rgb(47, 50, 255);}
+.box5 { background-color: rgb(47, 255, 227);}
+
+.flex-row {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.box-align-1 {
+    /* 모든 요소들 사이 여유 공간을 두고 배치*/
+    justify-content: space-around;
+}
+
+.box-align-2 {
+    /* 모든 요소들 사이 거리를 동일하게 배치*/
+    justify-content: space-evenly;
+}
+
+.box-align-3 {
+    /* 맨 왼쪽 맨 오른쪽 */
+    justify-content: space-between;
+}
+
+.box-align-c {
+    /* 중앙 정렬*/
+    justify-content: center;
+}
+
+.box-align-e {
+    /* 오른쪽 정렬*/
+    justify-content: end;
+}

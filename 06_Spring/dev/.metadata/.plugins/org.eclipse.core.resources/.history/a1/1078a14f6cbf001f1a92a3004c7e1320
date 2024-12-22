@@ -1,0 +1,29 @@
+package com.mypick.controller;
+
+import com.mypick.entity.User;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.ResponseEntity;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+public class UserControllerTest {
+
+    @Autowired
+    private TestRestTemplate restTemplate;
+
+    @Test
+    public void testCreateUser() {
+        User user = new User();
+        user.setEmail("test@example.com");
+        user.setPassword("password123");
+        user.setName("Test User");
+
+        ResponseEntity<User> response = restTemplate.postForEntity("/users", user, User.class);
+        assertThat(response.getStatusCodeValue()).isEqualTo(201);
+        assertThat(response.getBody().getEmail()).isEqualTo("test@example.com");
+    }
+}

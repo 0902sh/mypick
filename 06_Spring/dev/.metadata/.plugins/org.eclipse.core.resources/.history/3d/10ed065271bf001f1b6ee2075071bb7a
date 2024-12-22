@@ -1,0 +1,27 @@
+package com.mega.MyPick.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.mega.MyPick.entity.User;
+import com.mega.MyPick.service.UserService;
+
+@RestController
+@RequestMapping("/users/*")
+public class UserController {
+
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @GetMapping("create")
+    public User createUser(@RequestBody User user) {
+    //public User createUser(User user) {
+    	System.out.println("Create User Called");
+    	return userService.createUser(user);
+    }
+}

@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Timeout</title>
+</head>
+<body>
+    <h1>마우스를 올려 보십시오</h1>
+    <hr>
+    <div onmouseover="body.style.background='orange'"
+         onmouseout="body.style.background='white'">
+        마우스를 올리면 색상이 바뀝니다.</div>
+        <hr>
+        <div onmouseover="setFormatYourPC(1000)">
+            이 곳에 마우스를 절대 올리지 마시오. 경고
+        </div>
+        <div id="wrap"></div>
+</body>
+<script>
+    // setTimeout : 1회성
+    function setFormatYourPC(n){
+        setTimeout(formatYourPC, n);
+        setTimeout(function(){
+            document.write("<p>야 진짜 포맷된다니까??</p>")
+        }, 5000)
+    }
+
+    function formatYourPC(){
+        document.write("<h1>네 PC는 이제 포맷된다ㅎㅎㅎ</h2>")
+    }
+
+    // setInterval(function, millisec) : 일정 주기마다
+    function formatYourPC(){
+        const div = document.getElementById("wrap");
+        let h2 = document.createElement("h2");
+        h2.innerHTML = "너 진짜 ㅈ됨";
+        div.appendChild(h2);
+    }
+
+    var handler = setInterval(formatYourPC, 2000);
+    console.log("handler : " + handler);
+
+    setTimeout(function(){
+        clearInterval(handler);
+    }, 10000);
+</script>
+</html>

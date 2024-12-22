@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>File Upload</title>
+</head>
+<body>
+	<h1>File Upload Test(Ajax)</h1>
+	<hr>
+	<div class="uploadDiv">
+		<input type="file" name="uploadFile" multiple style="width: 200px;">
+	</div>
+	<hr>
+	<div class="uploadResult">
+		<ul>
+		<!-- 
+			<li>File1</li>
+			<li>File2</li>
+		-->
+		</ul>
+	</div>
+	<button id="uploadBtn" style="width: 200px">Submit</button>
+</body>
+<script src="/js/jquery-3.7.1.min.js"></script>
+<script>
+	$("#uploadBtn").on("click", function(e){
+		console.log("Upload Button Clicked");
+		
+		let inputFile = $("input[name='uploadFile']");
+		let files = inputFile[0].files
+		console.log(files);
+		
+		// FormData를 이용하여 전송 데이터에 file 추가
+		let formData = new FormData();
+		
+		for(let i=0; i<files.length; i++){
+			// file이 업로드 가능한지 체크한다.
+			if(checkFile(files[i].name, files[i].size) == false){
+				return;
+			}
+			
+			// formData에 추가한다.
+			formData.append("uploadFile", files[i]);
+		}
+		
+		console.log(formData);
+		
+		$.ajax({
+			url: "uploadAjaxAction",
+			processData: false,
+			contentType: false,
+			data: formData,
+			type: "POST",
+			success: function(result){
+				alert("file upload ok");
+				console.log(result);
+				inputFile.val("");
+				showUploadFile(result);
+			}
+		});
+		
+		
+	});
+	
+	function checkFile(filename, filesize){
+		// File Size Limit
+		let MAXSIZE = 5000000;
+		
+		if(filesize > MAXSIZE){
+			alert("파일 사이즈가 뭐 이리 크심")
+			return false;
+		}
+		
+		// File Extension Check
+		let RULE = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
+		if(RULE.test(filename)){
+			alert("이런 파일 올리시면 안됩니다.")
+			return false;
+		}
+		
+		return true;
+	}
+	
+	function showUploadFile(fileArray){
+		let uploadResult = $(".uploadResult ul");
+		
+		let str = "";
+		
+		$(fileArray).each(function(i, obj){
+			if(obj.image){
+				str += "<li><img src='/img/image.png' width='32px'>" + obj.fileName + "<li>";
+			}
+			else{
+				str += "<li><img src='/img/attach.png' width='32px'>" + obj.fileName + "<li>";
+			}
+		});
+		
+		uploadResult.append(str);
+	}
+</script>
+</html>

@@ -1,0 +1,5 @@
+package com.mypick.entity;
+
+public class User {
+
+}

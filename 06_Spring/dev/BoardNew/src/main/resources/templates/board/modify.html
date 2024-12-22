@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Modify</title>
+</head>
+<body>
+	<form action="/board/modify" method="post">	
+		제목 : <input type="text" th:field="${board.title}"><br><br>
+		내용 : <input type="text" th:field="${board.content}"><br><br>
+		저자 : <input type="text" th:field="${board.writer}"><br><br>
+		<input type="hidden" name="bno" th:field="${board.bno}">
+		<button>수정하기</button>
+		<a href="/board/list">리스트로 돌아가기</a>
+	</form>
+</body>
+<script th:inline="javascript">
+	function goUpdate(){
+		let bno = [[${board.getBno()}]];
+		location.href = "/board/modify?bno=" + bno;
+	}
+</script>
+</html>

@@ -1,0 +1,5 @@
+package com.mypick.controller;
+
+public class UserController {
+
+}

@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Callback</title>
+</head>
+<body>
+</body>
+<script>
+    function complexCal(num1, num2, callback){
+        if(callback){  // callback 자리에 무언가 입력되었다면
+            callback(num1 * num2 * 10)    ;
+        }
+        else{
+            console.log("[complexCal] " + (num1 * num2));
+        }
+    }
+
+    function printHTML(data){
+        document.write("<h2>드디어 밀수품 도착!</h2>");
+        document.write("<h3>printHTML : " + data + "</h2>");
+
+    }
+    printHTML("printHTML Test")
+
+    function callToPolice(data){
+        document.write("<h2>경찰서에 연락</h2>");
+        document.write("<h3>횡령죄" + data + "원</h2>");
+    }
+
+    callToPolice(1000);
+
+    complexCal(139, 200);
+    complexCal(139, 200, printHTML);
+    complexCal(139, 200, callToPolice);
+
+    // 상품명, 가격, 개수를 전달받은 후 전체 금액을 출력한다.
+    // 만약 callback이 있다면 데이터를 넘겨준다.
+    // callback에는 영수증 출력 기능을 넣어보기로 하자.
+
+    function pay(name, price, count, callback){
+        let total = price * count;
+        console.log("상품 : " + name);
+        console.log("가격 : " + price);
+        console.log("개수 : " + count);
+        console.log("합계 : " + total);
+        if(callback){
+            callback(name, count)
+        }
+    }
+
+    function printAll(name, total){
+        with(document){
+            document.write("<h1>쇼핑영수증 도착</h1>");
+            document.write("<hr>");
+            document.write("<h2>[" + name + "] " + total + "원</h2>");
+            document.write("<hr>")
+            document.write("<h4>온라인바가지쇼핑</h4>")
+        }
+    }
+
+    function printOnlyOne(name){
+        document.write("<h1>" + name + "구매함</h1>");
+        
+    }
+
+    function printFor4(name, total, desc, buydate){
+        document.write("<h1>" + name + "구매함</h1>");
+        document.write("<h1>" + total + "원</h1>");
+        document.write("<h1>" + desc + "가 세부정보</h1>");
+        document.write("<h1>" + buydate + "가 구매일자</h1>");
+    }
+
+    pay("종이봉투", 300, 60, printAll)
+    pay("종이봉투", 300, 60, printOnlyOne)
+    pay("종이봉투", 300, 60, printFor4)
+</script>
+</html>

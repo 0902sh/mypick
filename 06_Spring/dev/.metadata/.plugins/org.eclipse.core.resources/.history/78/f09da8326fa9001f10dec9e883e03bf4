@@ -1,0 +1,11 @@
+package com.mega.boardnew.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+
+public class BoardController {
+
+@GetMapping("write")
+public void write() {
+	
+}
+}

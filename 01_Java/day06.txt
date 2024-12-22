@@ -1,0 +1,191 @@
+Day6
+
+1. SuperTest
+    - Parent.jave, Child.java, SuperTest.java
+    - super는 부모 메서드의 내용을 가져오기 위해
+      사용할 때 가장 효과적이다.
+
+2. String Class
+    String str1 = "abcde";
+    String str2 = "abcde";
+    String str3 = new String("abcde");
+    String str4 = new String("abcde");
+
+    str1 == str2  : true
+    str3 == str4  : false
+
+(1) final 클래스로 상속 불가
+(2) new String("~~~"), "~~~" 두 가지로 생성 가능
+(3) 다수의 메서드들이 존재
+    1) length() : 문자열의 길이
+                  cf) char[] str => str.length
+                      String str => str.length()
+    2) charAt(인덱스) : 인덱스 위치에 있는 글자
+       jumin_no = "001231-3800121"
+       gender = jumin_no.charAt(7)
+    3) equals(str) : str과 동일한 문자열값인지 체크
+       equalsIgnoreCase : 대소문자 구분없이 체크
+    4) replace(찾을 문자열, 대체 문자열)
+    5) substring(시작인덱스, 종료인덱스)
+       jumin_no.substring(0, 6) => "001231"
+       결과 글자 수는 (종료인덱스 - 시작인덱스)
+    6) trim() : 문자열 앞 뒤의 공백 제거
+    7) split(나눌문자) : 나눌문자로 앞 뒤를 나누어 돌려줌
+    8) matches(정규표현식) : 문자열이 정규표현식에 맞는지 체크
+                            영문자 : A-Za-z
+                            숫자 : 0-9
+                            한글 : 가-힣
+                            (.*?)\.(exe|sh|zip|alz)$
+3. 인터페이스
+
+(1) 사전적 의미
+    하나의 시스템을 구성하는 두 개의 요소 또는
+    서로 다른 시스템 간의 상호 작용을 이루는 경계
+    하드웨어/소프트웨어/조건/규약/ 등을 포괄적으로
+       
+(2) java에서의 인터페이스
+    프로그램과 프로그램을 연결하는 것
+    한 마디로 요약하면 [규제]
+    특정한 규약에 의해 개발하도록 하는 목적
+    클래스가 인터페이스를 이용하려면 "반드시"
+    인터페이스가 규정한 메서드들을 다 만들어야함
+    인터페이스의 메서드를 구현하지 않으면 컴파일 실패
+
+(3) 왜 만들었을까??
+    계산기 프로그램 개발 프로젝트
+    계산기 자체는 A 개발자가 개발
+    계산기 이용 프로그램은 B 개발자가 개발
+    
+    동시에 개발을 하다보니 B는 A가 개발할
+    모습을 예측하여 개발 진행
+    그런데 나중에 보니....
+    A는 add(a, b)라고 개발했는데,
+    B는 add(a[])로 개발
+    => 폭망
+
+(4) 사용법
+    [public] interface 인터페이스명 {
+        [public][static][final] 자료형 상수명 = 값;
+
+        [public] 리턴타입 메서드명(인자);
+
+        [public] default 리턴타입 메서드명(인자){
+            메서드 내용;
+        }
+
+        [public] static 리턴타입 메서드명(인자){
+            메서드 내용;
+        }
+    }
+
+    class 클래스명 implements 인터페이스명 {
+
+        
+    }
+
+    * 클래스 생성 시 가장 복잡한 형태
+    class명 extends 부모 implements 인터1, 인터2 ...
+    throws Exception {
+
+    }
+
+(5) 예제
+    interface Interface1 {
+        public void myMethod1();
+    }
+
+    class Class1 implements Interface1 {
+
+    }
+
+(6) 인터페이스의 특징
+    - 상속과 구현은 완전히 다름
+    - 상속은 부모 클래스의 기능을
+      자식이 물려받는 것
+      인터페이스 구현은
+      인터페이스 구현은 자식이 반드시
+      만들도록 강제
+    - 클래스 선언은 class 
+      인터페이스 선언은 interface
+    - 클래스 상속은 extends
+      인터페이스 구현은
+
+(7) 인터페이스 구현 특이사항
+    1) 하나의 클래스가 여러 인터페이스 구현 가능
+       interface I1 { void x(); }
+       interface I2 { void y(); }
+       class Ci implements I1, I2 {
+            void x(){     }
+            void y(){     }
+       }
+
+    2) 인터페이스도 상속이 된다
+        interface I3 { void x(); }
+        interface I4 extends I3 {
+             void y();
+        }
+        class C2 implements I4 {
+             void x(){    }
+             void y(){    }
+        }
+
+(8) Headaches
+    1) default, static : Java 8부터 만들어짐
+    2) default : 메서드를 인터페이스가 만듬
+                 구현할 때 다시 만들어도 됨
+                 * 예) 메서드 선언이 600개가 있던 인터페이스
+                       많은 기업들이 이를 가지고 구축 완료
+                       자바가 업데이트 되면서 400개 메서드 추가
+                       => 아무도 업데이트 안함
+                       => 400개 메서드를 회사가 만들어 줌
+       static : 구현한 클래스의 객체화 없이 호출 가능
+
+=> CalculatorI.java, Calculator.java, CalApp.java
+=> MyInterface.java, MyClass.java
+   InterMain.java
+
+(9) 인터페이스의 사용
+    클래스와의 구분 모호함으로 사용 용도가 불분명해짐
+    Spring에서 부활함
+        Spring에서는 java, sql(mapper)가 역할이 분리
+        java에서는 인터페이스를 만들고 이름을 부여
+        sql xml에서는 이름에 매핑되는 SQL을 작성함
+        => java에서는 구현하지는 않았기 때문에
+           interface의 기본 사상에 합치
+
+4. 기본 클래스(Base Class)
+(1) System
+    System.out.println("AAA");
+    Scanner sc = new Scaner(System.in);
+    System.currentTimeMillis()
+        : 현재 시간을 밀리초 단위로 리턴
+        : 1970년 1월 1일 0시 0분 0초 기준
+    어디에 씀??
+    변수1 = System.currentTimeMillis();
+    나의 로직 수행
+    변수2 = System.currentTimeMillis();
+    변수2 - 변수1 = 나의 로직 수행시간(ms)
+
+(2) StringBuffer
+    String은 값이 바뀔 때마다 새롭게 공간 할당
+    StringBuffer는 뒤에 붙인다.
+    String끼리 값을 비교하는 메서드 equals가
+    StringBuffer에서는 없음
+    대신 StringBuffer는 toString() 메서드가 존재
+    insert, delete, append 등이 가능
+
+(3) Math
+    abs(값) : 절대값
+    ceil, floor : 올림, 내림
+                ceil(3.4) => 4
+                ceil(-3.4) => -3
+    round(300.34) => 300
+    소수점 첫째자리에서 반올림하려면??
+    일단 10을 곱한다. 3003.4
+    반올림한다 3003
+    다시 10을 나눈다. 300.3
+    min, max
+
+(4) Date : 날짜, Calendar : 달력
+    Calendar c = new Calendar()  (X)
+    

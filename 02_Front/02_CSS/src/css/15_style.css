@@ -1,0 +1,22 @@
+body > div {
+    background-color: goldenrod;
+}
+
+body > p {
+    background-color: chocolate;
+}
+
+.div01 {
+    width: 300px;
+    height: 150px;
+    background-color: pink; 
+    margin-bottom: 10px;
+}
+
+.div02 {
+    /* display: inline; */
+    width: 300px;
+    height: 150px;
+    background-color: deepskyblue;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Date & Math</title>
+</head>
+<body>
+    <h1>방문하신 시각에 따라 배경색이 달라집니다.</h1>
+    <hr>
+</body>
+<script>
+    // 현재 시간을 얻어온다.
+    var now = new Date();
+    console.log(now);
+    console.log(now.getFullYear());
+    console.log(now.getMonth() + 1);
+    console.log(now.getMilliseconds() + 1);
+
+    var current = now.getMilliseconds() % 4;  // 4로 나눈다
+    if(current == 0)
+        document.body.style.background = "violet";
+    else if(current == 1)
+        document.body.style.background = "green";
+    else if(current == 2)
+        document.body.style.background = "red";
+    else if(current == 3)
+        document.body.style.background = "blue";
+
+    // math
+    document.write("랜덤 수 뽑기 : " + Math.random());
+
+    // N이하의 정수를 뽑는 함수 만들기
+
+    function getRandom(n){
+        return Math.floor(Math.random() * n) + 1;
+    }
+
+    document.write(getRandom(100))
+
+    // 1부터 19 사이의 숫자를 하나 뽑는다.
+    // 1부터 19 사이의 숫자를 하나 더 뽑는다.
+    // 두 숫자의 곱을 정답이라고 지정한다.
+    // 사용자에게 문제를 내고 답을 맞추면
+    // 웬일이세요를 출력한다.
+    // 답을 못 맞추면 오답인거 본인이 아시죠를 출력한다.
+    // 답을 숫자가 아닌 것을 입력하거나 창을 닫아버리면
+    // 포기하냐고 물어본다.
+
+    var num1 = getRandom(19);
+    var num2 = getRandom(19);
+    var ans = num1 * num2;
+    var qs = num1 + " x " + num2;
+    console.log(qs + " = " + ans)
+
+    var yourAns = prompt(qs, 0);
+    if(yourAns == null || isNaN(yourAns) || yourAns == ''){
+        alert("포기하시나요")
+    }
+    else if(yourAns == ans){
+        alert("웬일이세요")
+    }
+    else{
+        alert("오답인거 본인이 아시죠")
+    }
+
+    
+
+    
+
+</script>
+</html>

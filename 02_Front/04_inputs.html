@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+   <meta charset='UTF-8'>
+   <title>inputs</title>    favicon
+</head>
+<body>
+    <!-- Text 입력 -->
+     <h3>사용자 정보 입력</h3>
+     이름 : <input type="text" value="이름말못함"><br>
+     계정 : <input type="text" placeholder="id를 입력하세요"><br>
+     암호 : <input type="password">
+     <hr>
+     <!-- radio 입력 -->
+      <h3>저녁 메뉴를 골라보시오.</h3>
+      스파게티 <input type="radio" name="dinner"><br>
+      빠에야 <input type="radio" name="dinner"><br>
+      짜파구리 <input type="radio" name="dinner"><br>
+      <hr>
+      <!-- checkbox 여러 개의 선택 -->
+       <h3>당신의 취미는 무엇인가요?</h3>
+       <input type="checkbox" checked>독서<br>
+       <input type="checkbox">요리<br>
+       <input type="checkbox">골프<br>
+       <br>
+       <!-- file, color -->
+        <h3>극비 시크릿 문서 옵로드</h3>
+        <input type="file"><br>
+        <input type="color"><br>
+        <!-- button -->
+        <hr>
+        <h3>제출하면 돌이킬 수 없을 것이다.</h3>
+        <input type="button" value="기술유출"><br>
+        <input type="submit" value="기술유출"><br>
+        <button>기술유출</button><br>
+        <input type="reset" value="모두원래대로">
+        <!-- select box -->
+        <hr>
+        <h3>저녁 디저트 고르기</h3>
+        <select>
+         <option>사과</option>
+         <option>딸기</option>
+         <option>메론</option>
+         <option>골드키위</option>
+        </select>
+        <!-- textarea -->
+         <h3>나에게 (욕포함) 하고 싶은 말을 적어보세요.(익명 보장x)</h3>
+         <textarea rows="6" cols="100"></textarea>
+         <!-- number, range, progress bar -->
+          <br>
+          <h3>받고 싶은 용돈 금액 넣기 : 단위(원)</h3>
+          number : <input type="number" min="10" max="100" step="5"><br>
+          range : <input type="range" min="10" max="100" step="5" style="width: 500px">
+          <hr>
+          <h3>내 영화 손익분기점 달성율</h3>
+          <progress value="70", max="100"></progress>
+          <br><br>
+
+</body>
+</html>

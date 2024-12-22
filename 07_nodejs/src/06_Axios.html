@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Axios</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<body>
+    <h1>Axios Users</h1>
+    <hr>
+    <div id="axiosdiv">
+        <button @click="getData">데이터 가져오기</button>
+        <br>
+        <!--
+        <div>{{ users }}</div>
+        -->
+        <ul>
+            <li v-for="user in users">
+                {{ user.name }}
+            </li>
+        </ul>
+
+    </div>
+</body>
+<script>
+    var app6 = new Vue({
+        el: '#axiosdiv',
+        data: {
+            users: '아무도 없음'
+        },
+        methods: {
+            getData: function(event){
+                console.log(event);
+                var vm = this;
+                vm.users = '아직 없어';
+
+                axios.get('https://jsonplaceholder.typicode.com/users/')
+                     .then(function(res){
+                        console.log(res);
+                        vm.users = res.data;
+                     });
+            }
+        }
+    });
+</script>
+</html>

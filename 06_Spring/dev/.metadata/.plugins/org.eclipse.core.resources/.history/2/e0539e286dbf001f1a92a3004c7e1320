@@ -1,0 +1,11 @@
+package com.mypick.controller;
+
+@Controller
+@RequestMapping("/test/*")
+public class TestController {
+
+	@GetMapping("test")
+	public void test() {
+		System.out.println("Test");
+	}
+}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>JSON</title>
+</head>
+<body>
+    <h1>Javascript JSON <-> Object </h1>
+    <hr>
+</body>
+<script>
+    user = { name: "BTS", members: 7, age: 25 }
+    userJSON = JSON.stringify(user);
+
+    console.log(user);
+    console.log(userJSON);
+
+    user2 = userJSON.parse(userJSON);
+    console.log(user2);
+
+    user2.member = 8;
+    user2.age = 28;
+    userJSON2 = JSON.stringify(user2);
+    console.log(userJSON2);
+
+    // 고차원
+    function Product(name, price, stock){
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+
+        // 자신을 json으로 변환하여 저장
+    }
+
+    var shoe = new Product("Fila", 108000, 10);
+    console.log(shoe);
+    console.log(shoe.JSON);
+    shoe.price = 110000;
+    console.log(shoe.json)  // 생성 당시에 실행된 함수
+
+    var products = new Array();
+    products.push(new Product("Fila", 108000, 10))
+    products.push(new Product("Jimmy Choo", 50800, 1))
+    products.push(new Product("Tori Burch", 200000, 5))
+
+    console.log(products)
+
+    document.write("<h2>신발1의 이름은" + products[0].name + "</h1>")
+    
+    
+    
+</script>
+</html>

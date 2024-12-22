@@ -1,0 +1,118 @@
+Day2
+
+1. link(링크) 태그
+    HTML link : 현재 페이지에서 다른 페이지로
+    하이퍼링크 또는 링크라고 부르며 태그는 <a>
+    <a href="경로 또는 외부 사이트 주소"
+       target="보여줄 창">문자열 또는 이미지</a>
+
+2. img 태그
+    - 구글에서 3장의 이미지를 다운받아
+      src/images에 저장하시오. => 03.link.html 수정
+    - 웹 페이지에서 주로 사용되는 이미지의 종류
+      1) JPEG : .jpg, .jpeg - 휴대폰, 카메라 사진
+      2) GIF : .gif - 움직이는 이미지
+      3) PNG : .png - 배경을 투명하게 할 떄 사용
+
+    - <img src="이미지의 경로" alt="대체문자열">
+    - img 태그는 closing이 없는 단독 태그
+
+    - 이미지의 경로는 절대경로가 있고 상대경로가 있음
+      절대경로라고 해도 C:/, D:/은 안됨, 절대경로는 웹루트(document root) 기점
+      절대경로 예) /img/7834.jpg
+      상대경로는 html의 위치를 기준으로 어디에 있는지 기술
+      images/*****, ../images/*****, ./*****
+      src/images    src              src안에 코드와 이미지가 둘 다
+                    images
+
+3. li(list 태그)
+(1) 순서없는 리스트(UL) : unordered list
+    <ul>과 <li>로 구성
+    <ul>
+        <li>리스트1</li>
+        <li>리스트2</li>
+    </ul>
+
+(2) 순서있는 리스트(OL) : ordered list
+
+    <ol type="타입" start="시작값">
+
+    </ol>
+
+    타입 : 1(숫자), A(영대문자), a(영소문자), i(로마숫자), I(로마숫자)
+
+4. input 태그
+    사용자로부터 입력을 받기 위해 사용하는 태그
+
+    * 속성(property)에 따라 역할이 다름, type 속성은 매우 중요
+    size : 글상자 크기
+    maxlength : 값의 최대 길이
+    placeholder : 입력하기 전 보여주는 텍스트
+    value : 입력 값
+    name : 변수명(나중에 프로그래밍 시에는 가장 중요함)
+    required : 필수 항목
+    type( <input type="type명"> )
+        text : 일반 텍스트 입력
+        password : 암호
+        radio : 하나만 선택 가능
+        checkbox : 여러 선택 가능한 체크박스
+        file : 파일 선택기
+        color : 색상 선택기
+        email : 이메일
+        url : http:// 체크
+        tel : 전화번호
+        date : 날짜
+        number : min, max, step 속성으로 숫자 크기를 조절하는 상하 버튼
+        range : 일정 범위 내 값만 입력 가능
+        serach : 검색어, 
+
+=> 04_inputs.html
+
+5. Button과 Form
+(1) Button
+    - <input type="submit"> : 제출됨
+    - <input type="button"> : 제출되지 않음
+    - <button>버튼이름</button> : 제출됨
+
+    - <input type="reset"> : 입력 데이터 초기화
+
+    -> 초반에는 제출되는 버튼 위주로 사용하나,
+       입력 데이터의 유효성 체크 등을 수행하기 위해서는
+       제출을 바로하면 안되기 때문에 type=button이 중용을 받는다
+(2) Form
+    - 데이터를 제출(전송)하기 위한 컴포넌트
+    - action 속성에 데이터를 가지고 이동할 주소를 기록
+    - 이동은 submit 방식의 버튼을 누르거나,
+      Javascript에서 submit을 수행할 수 있음
+
+6. Table(테이블)
+(1) 여러 종류의 데이터가 행과 열로 정리된 표
+    <table> 태그 사용
+
+(2) 기본 사용법
+    <table border="선굵기", align="정렬위치" width="너비">
+        <tr> height="행높이">
+            <td>데이터1</td>
+            <td>데이터2</td>
+            <td>데이터3</td>
+        </tr>
+    </table>
+
+(3) 병합(merge)
+    1) colspan
+        colspan="합칠 열의 개수"
+        <tr><td><td><td><td><td></tr>
+        <tr><td><td colspan="3"><td></tr>
+
+    2) rowspan
+        rowspan="합칠 행의 개수"
+        <tr><td rowspan="2"><td><td><td><td></tr>
+        <tr>                <td><td><td><td></tr>
+
+(4) caption
+    <caption> 태그로 테이블 상단에 짧은 설명을 붙일 수 있음
+
+(5) thead, tbody, tfoot
+    행을 묶어서 스타일 지정
+    히나의 테이블에 히나씩만 사용 가능
+    시각 장애인을 위한 화면 판독기 가능(웹 접근성)

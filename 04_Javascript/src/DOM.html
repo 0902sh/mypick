@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>DOM</title>
+</head>
+<body>
+    <h1>Name Property</h1>
+    <hr>
+    <form name="joinForm" id="abcdefg">
+        <div name="abdiv">
+            <input type="text" name="id">
+            <input type="button" value="btn" name="abbutton">
+        </div>
+        <div>
+            <input type="password" name="pw">
+        </div>
+        <div>
+            <input type="checkbox" name="lang" value="Java">Java
+            <input type="checkbox" name="lang" value="C">C
+            <input type="checkbox" name="lang" value="Javascript">Javascript
+        </div>
+        <input type="button" value="checall" onclick="">
+    </form>
+</body>
+<script>
+    console.log(joinForm);
+    console.log(joinForm.abdiv);
+    console.log(joinForm.id);
+    console.log(joinForm.abbutton);
+
+    const checkboxes = document.getElements
+    console.log(checkboxes);
+    checkboxes.forEach((checkbox, index) => {
+        if(checkbox.getAttribute("isPossible" != 'X'))
+            checkbox.checked = true;
+        else
+            checkbox.checked = false;
+    });
+    
+</script>
+</html>

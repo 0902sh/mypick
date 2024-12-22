@@ -1,0 +1,46 @@
+Day3
+
+0. Warming-up
+=> 11_CSS_basic.html
+
+1. Layout
+    - 요소(Element, 버튼 등 웹을 구성하는 모든 것)들을
+      화면에 배치하는 것
+    - 기본적으로는 위에서 아래, 좌에서 우로 배치
+    - 웹은 다양한 표현이 가능해야 하므로,
+      속성을 통해 다양한 배치 구현
+
+    * 주요 속성
+    display : block, inline,
+    position : static, relative, absolute, fixed
+    float : left, right
+
+2. Display 속성 상세
+(1) block
+    벽돌을 쌓듯이 쌓음, 다른 컴포넌트가 같은 줄에 위치할 수 없음
+    대표적인 block 속성 엘리먼트
+        - div, header, h1~h6(heading)
+        - canvas, section, article, ol, ul
+    width와 height를 지정할 수 있음
+
+(2) inline
+    한 라인을 차지하지 않고 우측으로, 아래쪽으로 빈 자리를 차지하며 흐름
+    대표적인 inline 속성 엘리먼트
+        - span, br, map, strong
+    width와 height 지정 불가
+    width를 딱 컨텐츠만큼만 설정되므로 padding, margin 설정 불가
+
+(3) inline-block
+    기본적으로는 inline으로 동작 - 다른 요소가 같은 라인에 존재 o
+    size 조정 가능
+    대표적인 inline-block 속성 엘리먼트
+        - button, select, textarea, input, img
+
+(4) none
+    디스플레이 하지 않음
+
+(5) flex
+    block 속성의 태그들을 여러 형태로 배치해주는 스타일
+    block 속성의 엘리먼트들을 가로로 배치함
+
+    

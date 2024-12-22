@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Write</title>
+</head>
+<body>
+	<form id="registForm" action="/board/write" method="post">
+		제목 : <input type="text" name="title"><br><br>
+		내용 : <input type="text" name="content"><br><br>
+		저자 : <input type="text" name="writer"><br><br>
+		
+		<div class="uploadDiv">
+			<input type="file" name="uploadFile" multiple style="width: 200px;">
+		</div>
+		<hr>
+		<div class="uploadResult">
+			<ul>
+			<!-- 
+				<li>File1</li>
+				<li>File2</li>
+			-->
+			</ul>
+		</div>
+		<button id="uploadBtn" style="width: 200px">Submit</button>
+		
+		<input type="submit" value="작성완료">
+	</form>
+</body>
+<script src="/js/jquery-3.7.1.min.js"></script>
+<script>
+	// $("#uploadBtn").on("click", function(e){
+	$("input[type='file']").change(function(e){
+	
+		// e.preventDefault();
+
+		console.log("Upload Button Clicked");
+		
+		let inputFile = $("input[name='uploadFile']");
+		let files = inputFile[0].files
+		console.log(files);
+		
+		// FormData를 이용하여 전송 데이터에 file 추가
+		let formData = new FormData();
+		
+		for(let i=0; i<files.length; i++){
+			// file이 업로드 가능한지 체크한다.
+			if(checkFile(files[i].name, files[i].size) == false){
+				return;
+			}
+			
+			// formData에 추가한다.
+			formData.append("uploadFile", files[i]);
+		}
+		
+		console.log(formData);
+		
+		$.ajax({
+			url: "/upload/uploadAjaxAction",
+			processData: false,
+			contentType: false,
+			data: formData,
+			type: "POST",
+			success: function(result){
+				alert("file upload ok");
+				console.log(result);
+				inputFile.val("");
+				showUploadFile(result);
+			}
+		});
+		
+		
+	});
+	
+	function checkFile(filename, filesize){
+		// File Size Limit
+		let MAXSIZE = 5000000;
+		
+		if(filesize > MAXSIZE){
+			alert("파일 사이즈가 뭐 이리 크심")
+			return false;
+		}
+		
+		// File Extension Check
+		let RULE = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
+		if(RULE.test(filename)){
+			alert("이런 파일 올리시면 안됩니다.")
+			return false;
+		}
+		
+		return true;
+	}
+	
+	function showUploadFile(fileArray){
+		let uploadResult = $(".uploadResult ul");
+		
+		let str = "";
+		
+		$(fileArray).each(function(i, obj){
+			if(obj.image){
+				
+				str += "<li data-path='" + obj.uploadPath + "' ";
+				str += "	data-uuid='" + obj.uuid + "' ";
+				str += "	data-filename='" + obj.fileName + "' ";
+				str += "	data-type='" + obj.image + "' >";
+				str += "<img src='/img/image.png' width='32px'>" + obj.fileName + "</li>";
+			}
+			else{
+				str += "<li data-path='" + obj.uploadPath + "' ";
+				str += "	data-uuid='" + obj.uuid + "' ";
+				str += "	data-filename='" + obj.fileName + "' ";
+				str += "	data-type='" + obj.image + "' >";
+				str += "<img src='/img/attach.png' width='32px'>" + obj.fileName + "</li>";
+			}	
+		});
+		uploadResult.append(str);
+	}
+			
+	$("input[type='submit']").on("click", function(e){
+		e.preventDefault();
+		let form = $("form#registForm");
+		let str = "";
+		
+		$(".uploadResult ul li").each(function(i, obj){
+			console.log(i + "번째 데이터");
+			
+			// $(obj).data("filename") => obj의 속성 중 data-filename을 가져온다.
+			console.log($(obj).data("filename"));
+			console.log($(obj).data("uuid"));
+			console.log($(obj).data("path"));
+			console.log($(obj).data("type"));
+			
+			let fileName = $(obj).data("filename")
+			let uuid = $(obj).data("uuid")
+			let uploadPath = $(obj).data("path")
+			let image = $(obj).data("type")
+			
+			// <input type='hidden' name='attachList[0].fileName' value='aaa.jpg'>"
+			str += "<input type='hidden' name='attachList[" + i + "].fileName' "
+				+ "value='" + fileName + "'>";
+			str += "<input type='hidden' name='attachList[" + i + "].uuid' "
+				+ "value='" + uuid + "'>";
+			str += "<input type='hidden' name='attachList[" + i + "].uploadPath' "
+				+ "value='" + uploadPath + "'>";
+			str += "<input type='hidden' name='attachList[" + i + "].image' "
+				+ "value='" + image + "'>";
+		});
+		
+		form.append(str);
+		console.log(str);
+		form.submit();
+	});
+	
+</script>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Global Function</title>
+</head>
+<body>
+</body>
+<script>
+    // 1. eval
+    var exp = prompt("난 계산기인데 수식 넣어봐");
+    document.write("<h3>귀하의 수식은" + exp + "</h3>")
+    document.write("<h3>결과가 나왔습니다</h3>")
+    document.write("<h3>이것입니다." + eval(exp) + "</h3>")
+
+    // 2. parseInt
+    var result = parseInt("Dark Soul")
+    document.write("<h1>parseInt 결과 : " + result + "</h1>")
+
+    // 3.isNaN
+    if(isNaN(result)){
+    document.write("<h2>isNaN says : 쟤 숫자 아닌거 넣었어요</h2>")
+    }
+
+    // 4. isFinite
+    if(!isFinite(result)){
+    document.write("<h3>쟤 숫자 아닌거 같아요</h2>")
+    }
+</script>
+</html>

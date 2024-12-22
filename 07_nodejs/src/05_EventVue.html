@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Event</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+    <h1>Vue.js Events</h1>
+    <hr>
+    <div id="eve">
+        <p>{{ message }}</p>
+        <button v-on:click="reverse">Reverse</button>
+        <button @mouseover="reverse2">Reverse2</button>
+        <br><br>
+        <!-- v-model은 양방향 통신 -->
+        <input type="text" v-model="yourMessage">
+        <h2>{{ yourMessage }}</h2>
+        <textarea v-model="yourMessage"></textarea>
+        <br>
+        <!-- 체크 박스는 true, false로 입력된다. -->
+        <input type="checkbox" v-model="yourChoice">Apple
+        <br>
+        <h2>{{ yourChoice? '사과선택했네?':'딴거먹냐?' }}</h2>
+    </div>
+</body>
+<script>
+    var app5 = new Vue({
+        el: '#eve',
+        data: {
+            message: '아이돌과 기획사의 다툼',
+            yourMessage: '',
+            yourChoice: '',
+        },
+        methods: {
+            reverse: function(){
+                this.message = this.message.split('').reverse().join('');
+            },
+            reverse2: function(){
+                this.message = this.message.split(' ').reverse().join(' ');
+            }
+        } 
+    });
+</script>
+</html>

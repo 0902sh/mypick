@@ -1,0 +1,88 @@
+Day2
+
+1. Vue.js
+    - 가장 중요한 사용 이유 : SPA이기 때문
+      SPA : Single Page Application
+            페이지 접속 시 모든 리소스를 로드시키고
+            페이지 이동이나 전환 발생 시
+            페이지 전체를 바꾸지 않고
+            변경이 필요한 부분만 바뀌는 어플리케이션
+
+    - 보통 js 프레임워크의 대표주자는 jQuery
+      새롭게 부상하는 후보 프레임워크로
+      React, Angular, Vue.js가 있음
+
+    - Angular : TypeScript를 사용할 줄 알아야 함
+    - React : 기존 Javascript 문법을 많이 활용
+    - Vue.js : Vue 문법을 새롭게 익혀야 함
+               *) Vue 문법은 태그 위주, 코드가 짧음
+
+2. Vue.js 개발 환경
+(1) 일반 편집기
+    Vue.js의 기본 코드들을 익히는 데 집중하는 기간에 유용함
+    <script src="CDN주소"></script>
+    방식으로 Vue.js 라이브러리를 CDN으로부터 사용
+(2) Vue Project
+    Node.js + Vue.js + Vue.cli
+    Node.js 설치 후 npm install을 이용하여 설치
+    웹 서버 + 서비스 형태로 개발 가능
+
+3. Vue.js 기초 문법
+(1) {{ }} - Mustache
+    Vue 인스턴스의 데이터를 html 태그에 연결하는 텍스트 삽입 방식
+(2) Vue Directives
+    Vue에서 제공하는 특수 속성임을 나타내는 v- 접두어로 시작
+    DOM에 특수한 반응형 동작 실행
+
+    1) v-bind
+       <span v-bind:title="message">
+       <span :title="message">로 약어 사용 가능
+       이 요소의 title 속성을 Vue 인스턴스의 message 속성과 연결
+    2) v-if
+        조건값이 true일 때 해당 태그가 유효
+    3) v-for
+        특정한 행동을 반복 수행하고 싶을 때 사용
+    4) v-on
+        <button v-on:click="reserve">
+        <button @click="reserve">로 약어 사용이 가능
+        특정 이벤트 발생 시 해야할 작업 설정
+
+4. Node.js를 이용한 Vue 웹 서버 기동하기
+(1) Vue 프로젝트를 위한 디렉토리 생성
+    cmd 또는 탐색기를 통해 디렉토리 생성
+    vue 디렉토리 생성
+
+(2) Vue 설치
+    cmd에서 Vue 설치 : vue 디렉토리 이동 후 npm install vue
+
+(3) Vue Client 설치
+    cmd에서 설치 : vue 디렉토리에서 npm install -g @vue/cli
+    830개 패키지 설치로 시간이 소요
+
+    Vue Client는 Vue 개발의 용이성을 위해 프로젝트를 생성해 주는 도구
+    실행하면 프로젝트 디렉토리 구성 및 초기 파일 생성
+
+(4) 프로젝트 생성
+    cmd에서 프로젝트 생성 : vue create myproject1    
+
+(5) 서버 구동
+    cd myproject1
+    npm run serve 실행 => 웹 서버 구동
+    8080 또는 다른 포트번호로 구동되었다는 메시지 확인
+    localhost:포트번호 => Welcome 페이지 확인
+
+(6) Vue Router 설치
+    cmd에서 vue add router
+
+2. Vue 파일 구성 요소
+(1) <template>
+    HTML 태그가 포함된 공간
+
+(2) <script>
+    스크립트 코드가 들어가는 공간으로 동일 파일의
+    template에서만 동작
+
+(3) <style>
+    스타일 속성에 관한 css 코드가 위치하는 부분
+    css는 본래 파일간 중첩이 허용되나,
+    style scoped 속성으로 해당 <template>에서만 적용               

@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Ex</title>
+</head>
+<body>
+</body>
+<script>
+    var choice = prompt("1, 2, 3번 이미지 중 선택하여 입력하세요\n(예) 1, 2, 3");
+    document.write("<h1>" + choice + "번 이미지를 선택하셨습니다</h1>")
+    
+
+    var image = new Array();
+    image.push("다운로드.jfif");
+    image.push("다운로드 (1).jfif");
+    image.push("다운로드 (2).jfif");
+    document.write("<img src='./image/" + image[choice-1] + "'")
+
+</script>
+</html>

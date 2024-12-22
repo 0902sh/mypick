@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 연결할 인터페이스 경로를 namespace에 작성 -->
+<mapper namespace="com.mega.boardnew.mapper.BoardMapper">
+	<sql id="criteria">
+		<if test="type != null and keyword != null">
+			<trim prefix="AND ">
+			<choose>
+				<when test="type=='T'.toString()">
+					TITLE LIKE CONCAT('%', #{keyword}, '%')
+				</when>
+				<when test="type=='C'.toString()">
+					CONTENT LIKE CONCAT('%', #{keyword}, '%')
+				</when>
+				<when test="type=='W'.toString()">
+					WRITER LIKE CONCAT('%', #{keyword}, '%')
+				</when>
+			</choose>
+			</trim>
+		</if>
+	</sql>
+	<select id="getList" resultType="boardVO">
+		<![CDATA[
+		SELECT BNO, TITLE, WRITER, CONTENT
+		     , REGDATE, UPDATEDATE
+		FROM   TBL_BOARD
+		WHERE  BNO > 0
+		]]>
+	</select>
+	<select id="getListWithKey" resultType="boardVO">
+		<![CDATA[
+		SELECT BNO, TITLE, WRITER, CONTENT
+		     , REGDATE, UPDATEDATE
+		FROM   TBL_BOARD
+		WHERE  BNO > 0
+		]]>
+		<include refid="criteria"></include>
+		/*
+		AND   (TITLE LIKE CONCAT('%', #{keyword}, '%') 
+		    OR CONTENT LIKE CONCAT('%', #{keyword}, '%'))
+		*/
+		/* Oracle : TITLE LIKE '%'||#{keyword}||'%' */
+		/* Maria : ? */
+		
+	</select>
+	<insert id="insert">
+		INSERT INTO TBL_BOARD(BNO, TITLE, CONTENT, WRITER)
+		VALUES(NEXTVAL(SEQ_BOARD), #{title}, #{content}, #{writer})
+	</insert>
+	<select id="read">
+		SELECT BNO, TITLE, WRITER, CONTENT
+		     , REGDATE, UPDATEDATE
+		FROM   TBL_BOARD
+		WHERE  BNO = #{bno}
+	</select>
+	<insert id="insertSelectKey">
+		<selectKey keyProperty="bno" order="BEFORE" resultType="long">
+			SELECT NEXTVAL(SEQ_BOARD) FROM DUAL
+		</selectKey>
+		INSERT INTO TBL_BOARD(BNO, TITLE, CONTENT, WRITER)
+		VALUES(#{bno}, #{title}, #{content}, #{writer})
+	</insert>
+	<delete id="delete">
+		DELETE FROM TBL_BOARD WHERE BNO = #{bno}
+	</delete>
+	<update id="update">
+		UPDATE TBL_BOARD
+		SET    TITLE = #{title}, CONTENT = #{content}
+		     , WRITER = #{writer}, UPDATEDATE = SYSDATE()
+		WHERE  BNO = #{bno}
+	</update>
+</mapper>

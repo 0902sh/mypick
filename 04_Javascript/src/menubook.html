@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Menu Book</title>
+</head>
+<body>
+    <h1>등록/취소</h1>
+    <hr>
+    name : <input type="text" id="name">
+    
+    <hr>
+    <div id="menubook"></div>
+</body>
+<script>
+    var menu = new Array();
+    var item = new Object();
+
+    function addMenu(){
+        console.log("Menu Add Button Clicked!!");
+        var name = document.getElementBId("name").value;
+        var name = document.getElementBId("name").value;
+        item = new Object();
+        item.name = name;
+        item.price = price;
+        menu.push(item);
+        console.log(menu);
+    }
+
+
+</script>
+</html>

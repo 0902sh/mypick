@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Table Exercise</title>
+    <style>
+        table {
+            margin: 10px auto; /* 상하여백은 10px, 좌우여백은 가운데로 */
+        }
+
+        th, td {
+            width: 100px;
+            height: 15px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        thead { background-color: #e3f2fd; }
+        tbody { background-color: #e0f2f1; }
+        tfoot { background-color: #ffcdd2; }
+    </style>
+</head>
+<body>
+    <table border="1">
+        <caption>&lt;thead&gt;&lt;tbody&gt;&lt;tfoot&gt;</caption>
+        <thead>
+            <tr>
+                <th>tagname</th>
+                <th>region</th>
+                <th>screenread</th>
+                <th>misc</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- zen coding-->
+            <tr>
+                <td>thead</td>
+                <td>제목</td>
+                <td rowspan="3">O</td>
+                <td style="background-color: yellow;"></td>
+            </tr>
+            <tr>
+                <td>tbody</td>
+                <td style="font-size: 32px;">본문</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>tfoot</td>
+                <td>요약</td>
+                <td></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">Summary</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

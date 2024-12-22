@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+   <meta charset='UTF-8'>
+   <title>Simple Table</title>
+   <style>
+        td {
+            background-color: chocolate;
+        }
+        
+        #data1 {
+            font-size: 100px;
+            background-color: brown;
+        }
+   </style>
+</head>
+<body>
+    <h1>Simple Table</h1>
+    <hr>
+    <table border="1" width="50%">
+        <tr height="50px">
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        <tr>
+            <td width="50%">Apple</td>
+            <td width="50%">100</td>
+        </tr>
+        <tr>
+            <td width="30%">Melon</td>
+            <td width="70%">2</td>
+        </tr>
+    </table>
+<hr>
+<table border="1" width="50%">
+    <caption>colspan, rowspan</caption>
+    
+    <tr>
+        <th width="50%" colspan="2">head1</th>
+        <th width="50%">head2</th>
+    </tr>
+    <tr>
+        <td>data1</td>
+        <td>data2</td>
+        <td rowspan="2">data3</td>
+
+    </tr>
+    <tr>
+        <td>food1</td>
+        <td rowspan="10">food2</td>
+        <!-- 자기 아래줄이 없는 rwspan은 그냥 의미없음. -->
+    </tr>
+</table>
+</body>
+</html>

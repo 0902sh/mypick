@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>script Tag에 code 작성</title>
+</head>
+<body>
+    <h1>이것은 스크립트 코드 내에 작성된 페이지</h1>
+    <hr>
+    <img src="./image/OIP (1).jfif"
+        onmouseover="over(this)"
+        onmouseout="out(this)"
+        onclick="clck(this)"
+        ondblclick="dblclck(this)">
+</body>
+<script>
+    function over(arg){
+        arg.src = "./image/OIP.jfif";
+        arg.width = arg.width * 1.1;
+        console.log("마우스")
+    }
+
+    function out(arg){
+        arg.src = './image/OIP (1).jfif';
+        arg.width = arg.width * 10 / 11;
+        console
+    }
+
+    function clck(arg){
+        arg.width = 2000;
+    }
+
+    function dblclck(arg){
+        arg.width = 10;
+    }
+</script>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Position</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body > div > div {
+            width: 200px;
+            height: 150px;
+            border: 1px solid gray;
+            text-align: center; /* 내부 글자가 가로로 가운데 정렬 */
+            line-height: 150px; /* 한 줄의 높이를 전체 상자 높이와 같게 - 세로로 가운데 정렬 */
+            font-size: 15px;
+            font-family: verdana;
+            background-color: lemonchiffon;
+        }
+
+        .relative {
+            position: relative;
+            top: -100px;
+            left: 100px;
+            z-index: 5;
+        }
+
+        .absolute {
+            position: absolute;
+            top: 100px;
+            left: 100px;    /* 높이, 지상으로부터 몇 층? 높을수록 고층 */
+        }
+
+        .wrap {
+            position: fixed;
+            top: 100px;
+            left: 0px;
+        }
+
+        .fixed {
+            position: fixed;
+            top: 80px;
+            left: 60px;
+            z-index: 3;
+        }
+
+        .static {
+            z-index: 4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Layout - Position</h1>
+    <hr>
+    <div class="wrap">
+        <div class="static">static(default)</div>
+        <div class="static">static2(default)</div>
+        <div class="relative">relative</div>
+        <div class="absolute">absolute</div>
+        <div class="fixed">fixed</div>
+
+    </div>
+</body>
+</html>

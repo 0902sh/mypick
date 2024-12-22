@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>List</title>
+<link rel="stylesheet" href="/css/bootstrap/css/bootstrap.css">
+<style>
+	@media (max-width: 918px){
+		.hide {
+			display: none;
+		}
+		.no { width: 10%; }
+		.title { width: 70%; }
+		.writer { width: 20%; }
+	}
+</style>
+</head>
+<body>
+	<div class="col-md-8" style="margin: 0 auto;">
+		<a href="/board/write">글쓰기</a>
+		<table class="table table-dark">
+			<tr>
+				<th class="no">No</th>
+				<th class="title">Title</th>
+				<th class="hide">Content</th>
+				<th class="writer">Writer</th>
+				<th class="hide">Reg</th>
+				<th class="hide">Upd</th>
+			</tr>
+			<th:block th:each="board:${list}">
+				<tr th:object="${board}">
+					<td th:text="*{bno}"></td>
+					<!-- <td th:text="${board.bno}"></td> -->
+					<!-- <td th:text="*{title}"></td> -->
+					<td><a th:text="*{title}" th:href="@{/board/get(bno=*{bno})}"></a></td>
+					<td th:text="*{content}" class="hide"></td>
+					<td th:text="*{writer}"></td>
+					<td th:text="*{regdate}" class="hide"></td>
+					<td th:text="*{updatedate}" class="hide"></td>
+				</tr>
+			</th:block>
+		</table>
+		<br>
+		<form method="get" action="/board/list">
+			<div style="text-align: center">
+				<select name="type">
+					<option value="T">제목</option>
+					<option value="C">내용</option>
+					<option value="W">작성자</option>
+				</select>
+				<input id="keyword" name="keyword" type="text">
+				<input type="submit" value="search">
+			</div>
+		</form>
+		<br>
+	</div>
+</body>
+<script th:inline="javascript">
+	var msg = [[${msg}]];
+	if(msg){
+		alert(msg);
+	}
+</script>
+</html>

@@ -1,0 +1,93 @@
+Day4
+
+1. with 절의 활용
+    - SQL의 맨 윗 부분에만 존재 가능
+    - 예전에는 서브쿼리로만 가능했던 기술
+    - 결과 집합의 이름을 미리 부여하고 테이블처럼 사용
+    - 중요한 이점 3가지
+        1) 가독성이 매우 뛰어나다
+        2) 다른 SQL로 쉽게 copy해서 쑬 수 있다
+        3) 동일한 로직이 여러 번 수행될 것을 한 번만 할 수 있다
+
+    with hpg as /* high price goods */
+    (
+        select prodname, price
+        from   prod
+        where  price > 100000
+    )
+    select *
+    from   hpg
+    ....
+    select *
+    from   hpg
+    where  price > 1000000
+
+2. Built-in Functions
+    - 설치와 동시에 사용 가능한 함수
+
+(1) Single row Function
+    - 한 개의 입력 -> 한 개의 데이터 출력
+    - 예) 절대값을 구하는 abs
+
+    1) numeric
+        abs(x), ceil(x), floor(x), round(x,y)
+        ceil(4.7) -> 5, ceil(-4.7) -> -4
+        trunc(4.7) -> 4, trunc(-4.7) -> -4
+
+    2) text
+        lower(str), upper(str) : 소문자로, 대문자로
+        length(str) : str의 길이 구하기(한글은 몇 글자로?)
+        substr(str, x, y) : 글자 자르기(x자리부터 y개)
+        lpad, rpad : 왼쪽, 오른쪽에 자리수를 보장하는 기호 삽입
+    
+    3) date 계열
+        DB마다 상이하나 날짜 계산은 DB에서 처리하는 것이 매우 효율적
+
+(2) Group(Aggregate) Function
+    - 1개 이상의 입력 -> 한 개의 출력
+    - 예) 평균을 구하는 avg
+    1) count(*) : 결과의 개수를 셈
+    2) distinct : 결과의 중복을 제거
+    3) 1) + 2) 조합으로 중복되지 않은 값의 개수
+    4) min, max
+    5) avg, sum
+3. SQL Advanced
+(1) order by
+    - 결과를 정렬하는 문법
+    - HighSchool Student 테이블의 결과를 정렬하고 싶다
+    -> 저학년에서 고학년 순, 1반부터 N반 순으로, 1번부터 N번
+    -> order by 학년, 반, 번
+    -> 고학년에서 저학년으로 해라??
+    -> order by 학년 desc, 반, 번
+
+(2) group by
+    - (group 함수를) 그룹별로 나누어 적용
+    - 한국어로 번역하면 ~별
+    - select 학년, avg(점수)
+      from   중간고사
+      group by 학년
+
+    => group by를 내가 몰랐다면??
+    select 학년, avg(점수)
+    from   중간고사
+    where  학년 = 1
+    union all
+    ...
+
+(3) having
+    - aggregate(group) 함수의 결과물에 대한 조건 filtering
+    - select 학년, 반, avg(점수)
+      from   중간고사
+      group by 학년, 반
+      having avg(점수) < 70.0
+
+(4) union, union all
+    - 두 집합을 연결하는 구문
+    - union은 중복을 제거, union all은 중복 제거 안함
+    - union all이 사용빈도가 훨씬 높음
+
+(5) 이외에 DB에 따라 minus를 지원하는 경우가 있음
+    - 데이터 검증용으로 많이 사용됨(A집합과 B집합이 같은가)
+      A minus B => 0 result
+      B minus A => 0 result
+      => 두 가지가 모두 0이면 A와 B는 동일하다.

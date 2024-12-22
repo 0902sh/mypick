@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Dialog</title>
+</head>
+<body>
+</body>
+<script>
+    // 1. alert : 결과를 바라지 않음. 정보 출력 목적
+    var ret = alert("난 너에게 아무 것도 바라지 않아")
+    document.write("<h1> alert return : " + ret + "</h1>");
+
+    if(ret == undefined){
+        document.write("<h1> 정해진 것 없다")
+    }
+
+    // 2. confirm
+    var msg = "";
+    ret = confirm("최초의 트위터 트윗을 29억에 결제하겠습니까??");
+    console.log("결제 결과 :  " + ret);
+
+    if(ret){
+        msg = "결제완료"
+    }
+    else {
+        // 3. prompt
+        var name = prompt("당신, 이름이 뭡니까??", "방랑자");
+        msg = name + "반드시 후회 할 것"
+    }
+
+    document.write("<br><br>" + "<h3>" + msg + "</h3>");
+</script>
+</html>

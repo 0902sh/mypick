@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Hello Vue</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+    <h1>Hello Vue : First Vue Page</h1>
+    <hr>
+    <div id="hello">
+        <h2>나의 첫 메시지 : {{ message }}</h2>
+        <h2>나의 두 번째 메시지 : {{ message2 }}</h2>
+    </div>
+    <div id="dbind">
+        <span v-bind:title="message">여기에 마우스를 올리면 시간 표시</span>
+        <br>
+        <span :title="message">여기도 마찬가지</span>
+        <br>
+        <a :href="url">이동하시려면 여기 클릭</a>
+    </div>
+    <div id="ifs">
+        <p v-if="seen_ok">이 글이 보이십니까??</p>
+        <button v-if="button_yn">나는 생각한다. 그러므로 존재한다.</button>
+    </div>
+    <div id="fors">
+        <ul>
+            <li v-for="food in foods">
+                {{ food.name }} - {{ food.price }}
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    var app1 = new Vue({
+        el: '#hello',
+        data: {
+            message: 'Vue, 난 아직 배고파',
+            message2: '짜장면 먹고 싶다'
+        }
+    });
+
+    var app2 = new Vue({
+        el: '#dbind',
+        data: {
+            message: '페이지가 로딩된 시간은 ' + new Date() + "입니다.",
+            url: 'http://map.google.com'
+        }
+    });
+
+    var app3 = new Vue({
+        el: '#ifs',
+        data: {
+            seen_ok: true,
+            button_yn: false
+        }
+    });
+
+    var app4 = new Vue({
+        el: '#fors',
+        data: {
+            foods: [
+                { name: '햄버거+콜라', price: 7000 },
+                { name: '김치볶음밥', price: 6000 },
+                { name: '식혜', price: 1500 }
+            ]
+        }
+    });
+</script>
+</html>

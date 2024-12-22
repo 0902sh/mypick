@@ -1,0 +1,82 @@
+Day4
+
+1. WebFont(웹폰트)
+    - 폰트를
+
+(1) static(기본)
+    - 나오는 순서대로 배치
+
+(2) absolute
+    - top, left, right, bottom
+    - 상위 엘리먼트의 기준점을 기준으로 위치 지정
+
+(3) relative
+    - top, left, right, bottom
+    - 원래 내 위치를 기준으로 위치 지정
+
+(4) fixed
+    - 전체 화면(viewport)을 기준으로 위치 지정
+
+3. Display-Flex
+    - div 등의 블럭 속성을 일렬로 배치 가능하도록 조정
+    - flex와 justify-content 속성을 통해 다양한 배치 구현
+      * justify-content
+      space-around : 앞 여백, 뒤 여백 등 모든 요소 사이에 동일 간격
+      space-evenly : 모든 요소 간 거리가 동일하게 배치
+      space-between : 맨 바깥쪽 여백 무시, 요소 간 거리만 고려
+      center : 여백 없이 중앙 정렬
+      flex-start : 여백 없이 왼쪽 정렬
+      flex-end : 여백 없이 오른쪽 정렬
+
+4. Zen Coding
+    - Visual Studio Code에서만 있는 기능
+    - HTML 코딩을 좀 더 빠르게 편하게 입력하는 기능
+    - Zen Coding 규칙
+        공백(space) X, 태그(<>) X
+        태그명만으로 작성하고 탭이나 엔터를 누르면 자동 완성
+    - div : <div></div>
+    - div*3 : <div></div><div></div><div></div>
+    - div>p : div와 자식 p 생성
+    - div>p*3 : div생성 후 자식 p 3개 생성
+    - div#wrap>ul>li*3
+    - ul>li.slide$*5
+    - ul>li.slide$$*5
+    - div>ul>li*3^ul>li*3
+    - div#wrap>(ul>li*3)+(ul>li*3)+(div)
+
+5. transition(전환)
+    - 전환 효과가 적용되는 CSS 속성
+    - 전환 효과 속성
+      opacity, width, height
+      top, bottom, left, rightcolor, background-color
+      transform
+    - 예제
+      transition: opacity 0.6s ease-in-out;
+      transition: opacity 0.6s ease-in-out, width 0.6s ease-in-out
+      transition: all 0.6s ease-in-out;
+
+      0.6s : 0.6초 동안 변화
+      ease-in : 효과를 점점 빠르게
+      ease-out : 효과를 점점 느리게
+      ease-in-out : 처음엔 느렸다가 빨라지다가 마지막에 다시 느려짐
+
+6. transform
+    - 엘리먼트의 이동, 회전, 크기 조정, 기울기 등을 적용
+    - scale() : 가로/세로 줌 효과를 늘리거나 줄임
+    - scaleX() : 가로/세로 방향 줌 효과
+    - rotate() : 회전 효과
+    - rotateX() / rotateY()
+    - skew() : 기울이기 효과
+    - skewX(), skewY()
+
+7. animation
+    - CSS style을 다른 cSS style로 부드럽게 전환
+    - 애니메이션의 구성 요소
+        애니메이션의 속성을 나타내는 CSS style
+        애니메이션의 시간의 변화를 주는 keyframe
+    - 주요 속성
+        animation-name : 애니메이션의 이름 지정
+        animation-duration : 애니메이션이 완성되는 시간
+        animation-delay : 엘리먼트가 로드되고 애니메이션이 시작되는 시간
+        animation-iteration-count : 재생 회수
+        animation-direction : 앞으로, 뒤로, 교대로 등 재생 순서

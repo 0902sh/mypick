@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>document.write</title>
+</head>
+<body>
+    <h1>document.write를 사용하여 요소 삽입하기</h1>
+    <hr>
+</body>
+<script>
+    document.write("<h3>Welcome</h3>");
+    document.write("<pre>");
+    document.writeln("Hello Hello");
+    document.writeln("  Are there SH?");
+    document.writeln("      yes");
+    document.write("<pre>");
+
+    with(document){
+        write("<h3>You're welcome이 수동태인 것 아셨어요?</h3>");
+        write("<pre>");
+        writeln("Good Afternoon");
+        writeln("2 + 5 는?");
+        writeln("<strong>" + (2+5) + "</strong>이다.");
+        write("<pre>");
+
+    }
+</script>
+</html>

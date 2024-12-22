@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Ex02</title>
+</head>
+<body>
+</body>
+<script>
+     var input = prompt("1에서 9의 숫자 중 선택")
+     var dan = parseInt(input); // 5.1 => 5
+
+     // 소수점 입력 걸러내기
+     var check = (dan == input);
+
+     // 1단 미만의 수를 입력한 경우
+     var check2 = (dan >= 1);
+
+     if(check && check2 && isFinite(dan)){
+     for(let i=1; i<=dan; i++){
+        document.write("<h2>" + dan + " x " + i
+                        + " = " + (dan*i) + "</h2>")
+     }
+    }
+    else {
+        alert("오류")
+    }
+</script>
+</html>

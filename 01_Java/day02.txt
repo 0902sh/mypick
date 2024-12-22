@@ -1,0 +1,121 @@
+day02
+
+Operation(연산)
+(1) 대입연산(Assignment)
+(왼쪽) = (오른쪽) -> 오른쪽을 왼쪽에 넣는다
++= : 더해서 넣는다. i += 1; -> i = i + 1;
+-=, *=, /=
+(2) 산술연산
+    우리가 알고 있는 사칙연산(+=*/), 나머지를 구하는 %
+    주민번호가 있는 데이터 파일이 100만건
+    내가 수행 가능한 작업의 수는 31개
+    주민번호 뒷자리 % 31 => 0 ~ 30까지 결과
+(3) 증감연산
+    ++, --
+    ++ : 1 증가
+    -- : 1 감소
+
+    int a = 10;
+    (1) int b = a++; b를 출력하면?
+    (2) int b = ++a; b를 출력하면?
+
+    (1)의 케이스는 b = a; a++;
+
+(4) 비교연산
+    A > B : true 또는 false가 나옴
+    A < B, A >= B
+    A == B : A와 B가 같은가?
+    A != B : A와 B가 다른가?
+
+(5) 논리연산 : 여러 개의 true, false 조건을 연결하는 연산
+    A && B : A가 true이고 B가 true일 때만 true
+    A || B : A 또는 B가 true이면 true
+    A ^ B : XOR, exclusive OR, 배타적 OR
+            A가 true이면 B가 false일 때 true
+            A가 false이면 B가 true일 때 true
+            ex) A와 B는 두 개의 시골 화장실 등불
+            둘 다 켜면 전기세 낭비
+            둘 다 끄면 끄면 귀신나옴
+    !A      : not A
+
+(6) 삼항연산(삼항조건문)
+    [조건식]? A : B; => 조건식이 true면 A
+                                false면 B
+
+
+2. 사용자 입력
+(1) 프로그램 수행 시 입력받는 방법
+    자바실행 : 1) javac를 이용하여 컴파일
+              2) java를 이용하여 Run
+                 java 클래스명 입력값1 입력값2 ... 입력값N
+                 eclipse에ㅓ run configurations => arguments 탭
+                 회사 또는 기관에서 야간 작업 시에 많이 씀
+                 (입력값으로 20240803 같은 것을 많이 사용)
+
+(2) Scanner 클래스 이용
+    아무 때나 입력이 필요할 때 사용
+    1) java.util.Scanner import
+    2) Scanner sc = new Scanner(System.in);
+    3) 다양한 방법으로 입력을 받는다.
+       sc.next() - 문자열
+       sc.nextInt() - 정수
+       sc.nextFloat() - float
+       sc.nextDouble() - double
+
+3. Random class
+(1) 임의의 수를 얻는 도구
+(2) 사용 방법
+    1) java.util.Random을 import
+    2) Random rd = new Random();
+    3) 다양한 방법으로 임의의 수를 얻는다.
+        rd.nextInt() - 정수범위(-21억~21억)중 하나
+        rd.nextInt(숫자) - 0부터 숫자-1까지의 범위
+        rd.nextFloat() - 0부터 1사이의 float
+        rd.nextDouble()
+
+        * 내 실패작
+        char ch1 = 'Z';
+		int result2 = rd.nextInt(ch1) + 1;
+		char rchar = (char)result2 ;
+        day02 첫번째 예제
+
+4. 제어문(Control Statement)
+    - 프로그램의 실행 순서를 변경하거나,
+      조건에 따라 실행할지 말지 결정
+    - 제어문에는 조건문, 반복문, 기타 제어문이 있음
+
+(1) 조건문(Conditional Statement)
+    1) if statement
+        사용방법)
+        if(조건1){
+            조건1이 true일 때 할 일;
+        }
+        else if(조건2){     ex) 조건1 : a > b && c > d
+            조건1은 false, 조건2는 true일 때 할 일;
+        }
+....
+        else if(조건N){
+            앞에 나온 모든 조건 false, 조건N
+        }
+        else {
+            모든 조건 실패 시 할 일;
+        }
+
+    2) switch statement
+        - 조건식의 결과가 아니라 값만으로 비교
+        - switch ~ case
+        - if문보다 속도가 빠름
+        사용방법)
+        switch(변수){
+            case 값1:
+                값1일 때 수행할 문장;
+                break;
+            case 값2:
+                값2일 때 수행할 문장;
+                break;
+            ...
+            default:
+                모든 값에 해당하지 않을 때 수행할 문장;
+        }
+
+        

@@ -1,0 +1,143 @@
+Day5
+
+1. 정규화(Normalization)
+(1) 정규화 목적
+    - 테이블 간 중복된 데이터를 가지지 않는 것이 목표
+    - 무결성 유지하면서 데이터베이스의 공간을 줄일 수 있음
+
+    order_list 테이블
+    --------------------------------------------------
+    order_no    prod    location    trans_fee
+    1           pencil  seoul       2500
+    2           plate   jeju        5000
+    3           ninten  seoul       2500
+
+    order_list에서 location이 seoul이면 무조건 2500원인데
+    왜 2500원 이라는 데이터를 보관하고 있는가?
+
+    trans_fee_map
+    location    trans_fee
+    seoul       2500
+    jeju        5000
+
+    기존 order_list에서 trans_fee 컬럼을 삭제하고
+    새로운 코드 테이블을 생성하여 용량을 최적화하는 것
+    => 정규화
+
+(2) 정규화의 정의
+    - 데이터의 삽입, 삭제, 수정 시 발생할 수 있는
+      이상현상을 줄이는 과정
+    - 데이터(테이블)을 분리하는 것으로 보통 3차까지 진행
+
+(3) 이상현상(anomally)
+    테이블의 잘못된 설계로 인해 불필요한 데이터가 중복되어
+    공간이 낭비되는 현상
+
+    id      name    major   classcode   classname   member
+    apple   kim     com.    c001        java        30
+    apple   kim     com.    c002        DBMS        35
+    apple   kim     com.    c003        Python      30
+    lenon   john    music   a001        Drum        10
+    sunshin lee     seats   b001        Ship        10
+
+    1) 삽입 이상
+    새로운 데이터를 넣을 때 불필요한 데이터가 들어가는 문제
+    왜? 종속적인 데이터도 넣어야 하기 때문에 +
+    수강과목을 정하지 않은 학생을 넣을 때 수업명을 비울 수 없어
+    X001, TBD 등을 만들어 넣어야 함
+
+    2) 갱신 이상
+    중복된 행 중 일부만 변경하면 데이터의 불일치 발생
+    kim이 com.을 때려치고 social 전공으로 바꾸면
+    반드시 3개 행 모두를 바꿔야 하며,
+    일부만 수정하면 이상 현상이 발생
+
+    3) 삭제 이상
+    행을 삭제하면 필요한 데이터까지 삭제되는 문제
+    Drum 수업을 폐강하면 john lenon 데이터가 삭제됨
+
+(4) 정규화의 종류
+    1) 1차 정규화
+        - 하나의 컬럼에는 한 개의 정보(값)만
+          => 원자성
+
+    * SimCity
+    User    Building        Cost        Place           Placesize
+    -------------------------------------------------
+    Bach    Farm,Fac        50,70       Plain,City      100,200
+    Mozart  Farm,Fac,Cos    50,70,200   Plain,City,City 100,200,300
+    Tscai   Fac             70          shore           500
+
+    => User가 건물을 건설할 때마다 해당 row 값을 update해야 함
+    => update는 delete => insert로 시스템에 부하를 줌
+
+    Bach    Farm        50          Plain       100
+    Bach    Fac         70          City        200
+    Mozart  Farm        50          Plain       100
+    ....
+
+    각 컬럼은 하나의 데이터만을 보관하게 된다.
+
+    2) 2차 정규화
+        - 후보키의 진부분집합에서 부분함수 종속성을 제거
+          부분함수적 종속을 완전함수적 종속으로 바꾸는 과정
+
+        - 진부분집합
+          A, B, C : (A), (B), (C), (A,B), (B,C), (A,C)
+                    (A, B, C)는 아님
+    
+    Bach    Farm    Plain   100
+    Bach    Fac     City    200
+    Tscai   Farm    Plain   100
+
+    Farm    50
+    Fac     70
+    Cos     200
+
+    3) 3차 정규화
+        - 1차 및 2차 정규화를 만족하고
+          이행적 함수적 종속을 갖지 않는 정규형
+
+        - 이행적 함수적 종속
+          A를 알면 B를 알고, B를 알면 C를 알기 때문에
+          결국 A를 알면 C를 알게 되는 구조
+
+    Bach    Farm    Plain
+    Bach    Fac     City
+    Tscai   Farm    Plain
+
+    Farm    50
+    Fac     70
+    Cos     200
+
+    Plain   100
+    City    200
+    Shore   500
+
+2. 반정규화(Denormalization)
+    - 활용단계에서 정규화를 진행하지 않는 것이
+      더 장점이 있을 경우 사용
+
+    ex) 게시판
+    1   Funny DBMS      apple
+    2   Funny java      apple
+    3   Boring DBMS     honest
+
+    hash Tag
+    1   DBMS
+    1   like
+    1   good
+    3   DBMS
+    4   boring
+
+    해시 태그 저장은 거의 1회성
+    해시 태그를 통한 조회는 다수
+
+    -> 정규화가 속도에 발목을 잡는다.
+    => 반정규화 => 속도 개선 목적
+
+    1   Funny DBMS      apple   #DBMS #like #good
+    2   Funny Java      apple
+    3   Boring DBMS     honest  #dbms #boring
+
+  

@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Transition</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 50px;
+            margin: 10px auto;
+            background: #68f;
+            transition: all 0.5s ease-in-out, transform 2s;
+        }
+
+        .box1 { opacity: 0.1; }
+        .box2 { opacity: 0.2; }
+        .box3 { opacity: 0.3; }
+        .box4 { opacity: 0.4; }
+        .box5 { opacity: 0.5; }
+        .box6 { opacity: 0.6; }
+        .box7 { opacity: 0.7; }
+        .box8 { opacity: 0.8; }
+        .box9 { opacity: 0.9; }
+
+        .box:hover {
+            opacity: 1;
+            width: 50px;
+            background-color: red;
+            scale: 10;
+        }
+
+        .round {
+            width: 300px;
+            height: 300px;
+            border-radius: 100%;
+            background-color: darkblue;
+            color: beige;
+            text-align: center;
+            line-height: 300px;
+            font-size: 30px;
+            margin: 50px auto;
+            transition: transform 1s ease-in
+        }
+
+        #rotateY:hover {
+            background-color: purple;
+            transform: rotateY(360deg)
+        }
+
+        #rotateX:hover {
+            background-color: purple;
+            transform: rotateX(360deg)
+        }
+
+        #skew:hover {
+            transform: skew(30deg, 20deg);
+        }
+
+        #skewX:hover {
+            transform: skew(30deg, 20deg);
+        }
+
+        #skewY:hover {
+            transform: skew(30deg, 20deg);
+        }
+        #translate:hover { transform: translate(3000px, 100px); }
+
+        /* animation을 위한 key frame 설정 */
+        /* key frame은 @keyframes를 통해 설정한다. */
+        @keyframes ani {
+            from { transform: translate(0, 0); }
+            to { transform: translate(400px, 0); }
+        }
+
+        #ani1 { animation: ani 3s; }
+        /* alternate : 초기 위치로 돌아감 */
+        /* infinite : 무한 반복 */
+        #ani2 { animation: ani 3s alternate infinite ease-in-out }
+
+        @keyframes mov {
+            0% { left: 0; top: 0; }
+            25% { left: 400px; top: 0; }
+            50% { left: 400px; top: 400px; }
+            75% { left: 0px; top: 400px; }
+            100% { left: 0; top: 0 }
+        }
+
+        #ani3 {
+            animation: mov 8s infinite ease-in-out;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Transition</h1>
+    <hr>
+    <div id="wrap">
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box box3"></div>
+        <div class="box box4"></div>
+        <div class="box box5"></div>
+        <div class="box box6"></div>
+        <div class="box box7"></div>
+        <div class="box box8"></div>
+        <div class="box box9"></div>
+        <div class="round" id="rotateY">rotateY</div>
+        <div class="round" id="rotateX">rotateX</div>
+        <div class="round" id="skew">skew</div>
+        <div class="round" id="skewY">skewY</div>
+        <div class="round" id="skewX">skewX</div>
+        <div class="round" id="translate">translate</div>
+        <div class="round" id="ani1">ani1</div>
+        <div class="round" id="ani2">ani2</div>
+        <div class="round" id="ani3">ani3</div>
+
+
+
+    </div>
+</body>
+</html>

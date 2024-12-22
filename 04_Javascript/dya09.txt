@@ -1,0 +1,60 @@
+Day9
+
+1. Timeouts
+(1) setTimeout
+    일정시간 경과 후 실행(1회성)
+    setTimeout(실행할 함수, 시간-밀리초)
+(2) setInerval
+    일정시간마다 실행
+    var handler = setInerval(실행할 함수, 시간-밀리초)
+(3) clearInterval
+    Interval 설정 취소
+    clearInterval(handler)
+
+2. Object(객체)
+    객체의 고유한 속성을 Property라고 부르며
+    여러 Property와 Value의 쌍으로 표현됨
+
+    account = { name : "Jack",
+               number: "001234-5678901",
+               code: "24hour"
+             }
+    - account.프로퍼티명
+    - account.['프로퍼티명']
+
+    객체는 함수도 가질 수 있으며 이를 메서드라고 부름
+
+    account = { deposit: function(){
+
+              }};
+
+
+3. JSON(JavaScript Object Notation)
+    - Javascript용 표기 방식
+    - REST API 등에서 많이 사용됨
+    - JSON 객체는
+      Object도 JSON 형식으로 변환이 가능하다.
+    
+    JSON.parse : 해석하다, 문자열 -> 오브젝트
+    JSON.stringify : 문자열화하다, 오브젝트 -> 문자열
+
+4. Array와 Object를 활용한 MenuBook 만들기
+    - 이름, 가격으로 구성된 아이템
+    - 버튼 클릭 시 아이템을 메뉴에 추가하거나
+      메뉴에서 아이템을 클릭하면 메뉴에서 삭제
+    - Array에 추가는 push(), 삭제는 splice()를 이용
+    - 메뉴판 배경을 책 이미지로 대체하면 퀄리티 상승
+
+5. DOM(Document Object Model)
+    - HTML Tag들을 하나씩 오브젝트화 한 것
+    - HTML 페이지의 모양과 내용을 제어하기 위해 사용하는 객체
+
+    <div>
+        <ul>
+            <li></li>
+        <ul>
+    </div>
+
+    - div, ul, li 어떤 것도 자바스크립트의 객체로 선언 가능
+    - HTML 태그 당 DOM 객체가 하나씩 생성
+    - HTML 태그의 포함관계에 따라 Parent-Child 관계로 구성

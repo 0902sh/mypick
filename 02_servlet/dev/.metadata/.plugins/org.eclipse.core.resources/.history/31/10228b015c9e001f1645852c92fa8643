@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Session Login</title>
+</head>
+<body>
+<%
+	if(session.getAttribute("userid") != null){	// login되어 있다
+		System.out.println("[getSession] Login : OK");
+	}
+	else {	// login되어 있지 않다
+		System.out.println("[getSession] Login : Not Yet");
+		// 회원가입을 위한 Interface를 연다. 
+	}
+%>
+</body>
+</html>

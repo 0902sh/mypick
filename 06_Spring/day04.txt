@@ -1,0 +1,75 @@
+Day4
+
+1. 게시판 제작 실습
+(1) 게시판의 메인 테이블 생성
+    각 게시글(Board)들 마다 달라야만 하는 정보 => Key
+    Key를 생성하는 방법(채번)은 2가지가 있음
+
+    1) 가장 큰 번호를 찾아서 +1 하기
+       단점
+       - 전체 게시글의 개수가 많아질수록 느려진다
+         (오라클 등 일부 DB는 인덱스를 거꾸로 읽는 방법이 있어
+          거꾸로 읽으면서 1건만 선택하게 하면 속도 저하 X)
+       - 다른 사람이 글을 쓰고 있는 도중에 채번을 하게 되면
+         같은 번호로 채번할 가능성이 있음(어플리케이션 설계 미스)
+
+    2) 시퀀스에서 채번하기
+       - 데이터베이스는 시퀀스라는 오브젝트가 있음
+       - 데이터를 꺼내갈 때마다 일정 숫자가 증가(+1)하는 오브젝트
+
+(2) 테이블 및 시퀀스 생성
+    -- 시퀀스명은 일반적으로 seq_로 시작
+    create sequence seq_board nocache;
+
+    -- 테이블명은 일반적으로 tb_ 또는 tbl_로 시작
+    create table tbl_board
+    (
+        bno     int(10),
+        title   varchar(200) not null,
+        content varchar(2000) not null,
+        writer  varchar(50) not null,
+        regdate date default sysdate(),
+        updatedate date default sysdate()
+    );
+
+    -- Primary Key
+    alter table tbl_board add constraint tbl_board_pk
+    primary key(bno);
+
+(3) 샘플 데이터 입력
+    insert into tbl_board(bno, title, content, writer)
+    values(nextval(seq_board), '제목1', '내용1', '글쓴이1');
+    -- oracle계열은 seq_board.nextval
+
+(4) BoardVO 작성
+    VO : 데이터의 묶음, DB 테이블의 데이터 조회 단위로 많이 쓰임
+    DTO(Data Transfer Object) : VO와 유사, 약간의 로직이 추가될 수 있음
+
+(5) BoardMapper.java 인터페이스 생성
+    public List<BoardVO> getList() 추가
+
+(6) resources/config 폴더 생성
+    resources/config/config.xml 생성
+    => 왜? alias 설정 - 타이핑을 치려면 상당히 번거로움
+       boardVO, 본명 com.mega.boardnew.bean.BoardVO
+
+(7) config.xml을 MyBatis가 인식하게 설정
+    MyBatisConfig.java에 config 파일 위치 설정
+    => setConfigLocation(....) 작성
+    => 주의 : Location, getResource에 s가 없음에 유의
+
+(8) resources/mapper/BoardMapper.xml 작성
+    => getList에 대한 SQL 작성
+       BNO > 0이 포함되어 있어 CDATA 사용
+
+(9) test => BoardMapperTest.java 작성
+    => Autowired된 BoardMapper 작성
+    => testGetList() 작성(Lambda 문법 적용)
+    => Run as JUnit => 게시물 정보 출력되면 성공
+
+(10) interface > mapper.xml > JUnit Test 반복
+    1) insert
+    2) insertSelectKey
+    3) read
+    4) delete
+    5) update

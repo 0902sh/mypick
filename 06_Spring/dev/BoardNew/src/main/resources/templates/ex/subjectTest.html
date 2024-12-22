@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>성적표</title>
+</head>
+<body>
+	<h1 th:text="${feeling}">성적표</h1>
+	<h1>오늘의 기분 : [[${feeling}]]</h1>
+	<h1>오늘의 기분 : <span th:text="${feeling}"></span></h1>
+	<h1 th:text="${'오늘의 기분 : ' + feeling}"></h1>
+	<hr>
+	<table width="50%" border="1">
+		<tr>
+			<th>Eng</th>
+			<th>Kor</th>
+			<th>Math</th>
+			<th>Sum</th>
+			<th>Avg</th>
+		</tr>
+		<tr th:object="${subject}" style="text-align: center;">
+			<td th:text="*{eng}"></td>
+			<td th:text="*{kor}"></td>
+			<td th:text="*{math}"></td>
+			<td th:text="*{eng+kor+math}"></td>
+			<td th:text="*{(eng+kor+math)/3F}"></td>
+		</tr>
+	</table>
+</body>
+</html>

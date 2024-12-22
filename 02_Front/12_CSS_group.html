@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>CSS Group</title>
+    <style>
+        div.greentext { color: green;}
+        /* div중 greentext class만 선택하려면
+        div.greentext로 선택하면 된다. */
+        .crimsontext { color: crimson;}
+        .grey, .violet { 
+            font-family: 'Lucida Sans'
+        }
+        .grey { color: grey;}
+        .violet { color: violet;}
+        .bigfont { font-size: 256px; }
+    </style>
+</head>
+<body>
+    <p class="greentext">P 그린텍스트</p>
+    <div id="container">
+        <div class="greentext">초록색이 난 좋아</div>
+        <div class="crimsontext">빨간색이 난 더 좋아</div>
+        <br>
+        <p class="grey">
+            그룹 공통으로 필요한 속성은 선택자들을
+        </p>
+        <p class="violet bigfont">
+            쉼표(,)로 연결하고 한 번만 정의한다.
+        </p>
+    </div>
+</body>
+</html>

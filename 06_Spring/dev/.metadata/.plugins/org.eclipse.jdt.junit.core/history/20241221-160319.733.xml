@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="com.mypick.controller" project="BoardNew-1" tests="1" started="0" failures="0" errors="1" ignored="0">
+  <testsuite name="com.mypick.controller.UserControllerTest" incomplete="true" displayname="UserControllerTest" uniqueid="[engine:junit-jupiter]/[class:com.mypick.controller.UserControllerTest]">
+    <error>java.lang.IllegalStateException: Unable to find a @SpringBootConfiguration, you need to use @ContextConfiguration or @SpringBootTest(classes=...) with your test&#13;
+	at org.springframework.util.Assert.state(Assert.java:79)&#13;
+	at org.springframework.boot.test.context.SpringBootTestContextBootstrapper.findConfigurationClass(SpringBootTestContextBootstrapper.java:246)&#13;
+	at org.springframework.boot.test.context.SpringBootTestContextBootstrapper.getOrFindConfigurationClasses(SpringBootTestContextBootstrapper.java:233)&#13;
+	at org.springframework.boot.test.context.SpringBootTestContextBootstrapper.processMergedContextConfiguration(SpringBootTestContextBootstrapper.java:150)&#13;
+	at org.springframework.test.context.support.AbstractTestContextBootstrapper.buildMergedContextConfiguration(AbstractTestContextBootstrapper.java:351)&#13;
+	at org.springframework.test.context.support.AbstractTestContextBootstrapper.buildDefaultMergedContextConfiguration(AbstractTestContextBootstrapper.java:267)&#13;
+	at org.springframework.test.context.support.AbstractTestContextBootstrapper.buildMergedContextConfiguration(AbstractTestContextBootstrapper.java:215)&#13;
+	at org.springframework.test.context.support.AbstractTestContextBootstrapper.buildTestContext(AbstractTestContextBootstrapper.java:108)&#13;
+	at org.springframework.boot.test.context.SpringBootTestContextBootstrapper.buildTestContext(SpringBootTestContextBootstrapper.java:111)&#13;
+	at org.springframework.test.context.TestContextManager.&lt;init&gt;(TestContextManager.java:142)&#13;
+	at org.springframework.test.context.TestContextManager.&lt;init&gt;(TestContextManager.java:126)&#13;
+	at org.springframework.test.context.junit.jupiter.SpringExtension.getTestContextManager(SpringExtension.java:363)&#13;
+	at org.springframework.test.context.junit.jupiter.SpringExtension.beforeAll(SpringExtension.java:128)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)&#13;
+&#13;
+</error>
+    <testcase name="testCreateUser" classname="com.mypick.controller.UserControllerTest" incomplete="true" displayname="testCreateUser()" uniqueid="[engine:junit-jupiter]/[class:com.mypick.controller.UserControllerTest]/[method:testCreateUser()]"/>
+  </testsuite>
+</testrun>

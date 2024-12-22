@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Responsive Test 2</title>
+    <style>
+        body { color: blue; }
+        #container {
+            width: 940px;
+            margin: 10px auto;
+            padding: 20px;
+            border: 1px solid #bcbcbc;
+        }
+        .header {
+            width: 700px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid purple;
+        }
+        .content {
+            width: 580px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid darkgreen;
+            float: left;
+        }
+        .sidebar {
+            width: 260px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid darkblue;
+            float: right;
+        }
+
+        .footer {
+            clear: both;
+            padding: 20px;
+            border: 1px dotted pink;
+        }
+
+        @media (max-width: 720px){
+            body { color: red; }
+            #container { width: auto;}
+            .header {
+                text-align: center;
+            }
+            .content {
+                width: auto;
+                float: none;
+            }
+            .sidebar {
+                width: auto;
+                float: none;
+            }
+            .footer {
+                text-align: center;
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    This sentense is for nothing.....
+    <div id="container">
+        <div class="header">
+            <h1>Responsive Web Example</h1>
+        </div>
+        <div class="content">
+            <h2>Content</h2>
+            <p>
+                누군가가 조교에게 질문을 했다. 조교는 그 문제를 못 풀었다.
+                그러자 학생 누군가가 풀었다. 조교도 못 푸는 문제가 있다는 점에 안심,
+                그러나 같이 수업듣는 학생이 뛰어나다는 것에 좌절
+            </p>
+        </div>
+        <div class="sidebar">
+            <h2>Sidebar</h2>
+            <ul>
+                <li>진성학원</li>
+                <li>진명학원</li>
+                <li>한샘학원</li>
+            </ul>
+        </div>
+        <div class="footer">
+            <h3>CopyNoRight</h3>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Variable</title>
+</head>
+<body>
+    <h1>Javascript Variable</h1>
+</body>
+<script>
+    // 1. scope
+    if(10 > 1){
+        var data1 = 10;
+    }
+    console.log("#1 : " + data1);  // data1은 지역변수 같지만 전역변수
+
+    for(var i=0; i<10; i++){  // 반복문에서 선언된 변수도 전역
+        console.log("바")
+    }
+    console.log("#2 : " + i);
+
+    var x = 500;
+    console.log(typeof(x));
+    x = "abcdefg"
+    console.log(typeof(x));
+    x = 500;
+    var zz = 5000;
+
+    function f(){
+        var y;
+        x = 10;
+        y = 10;
+        z = 10;
+        var zz;
+        zz = 10000;
+        console.log("#3 zz : " + zz);
+    }
+
+    f();
+    console.log("#4 x : " + x);
+    // console.log("#5 y : " + y);
+    // console.log("I am happy");
+    console.log("#6 z : " + z);
+    console.log("#7 zz : " + zz);
+
+    // 2. Hoisting(호이스팅) : 선언의 위치와 관계없이 존재하면 메모리에 할당
+
+    function f2(){
+        console.log("f2 called");
+    }
+
+    // 초기화 작업(값 할당 제외)만 호이스팅
+    // 변수는 변수 이름만 호이스팅됨
+    console.log("#8 data2 : " + data2);
+    var data2 = 500;
+    
+    // 3. const
+
+    const golden_rule = "I'm King";
+    golden_rule = "You King";void
+    console.log("#10 golden_rule : " + golden_rule);
+
+    // 4. let
+    let doctrine = "한국은 자유";
+    console.log("#11 doctrine : " + doctrine);
+
+    for(let k=0; k<100; k++){
+        ;
+    }
+
+    // console.log("#12 k : " + k);  // for문 안에서 사용된 let 변수는 사라진다.
+
+    if(10 > 1){
+        let data3 = 10.37;
+    }
+    console.log("#13 data3 : " + data3);
+
+    list = [];
+    list.name = "j";
+    list.cry = function(){ console.log("Crying")}
+    console.log(list.name);
+    list.cry();
+
+
+</script>
+</html>

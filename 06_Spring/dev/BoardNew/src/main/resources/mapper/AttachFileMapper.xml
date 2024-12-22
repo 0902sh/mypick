@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mega.boardnew.mapper.AttachFileMapper">
+	<insert id="insert">
+		INSERT INTO TBL_ATTACH(FILENAME, UUID, UPLOADPATH, IMAGE, BNO)
+		VALUES (#{fileName}, #{uuid}, #{uploadPath}, #{image}, #{bno})
+	</insert>
+	<select id="findByBno" resultType="attachFileVO">
+		SELECT * FROM TBL_ATTACH WHERE BNO = #{bno}
+	</select>
+</mapper>

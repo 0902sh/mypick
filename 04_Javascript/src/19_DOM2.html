@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>DOM2</title>
+</head>
+<body>
+    <h1>Get By Class</h1>
+    <hr>
+    <ul>
+        <li class="odd ddd first fff 888">Fork Rib</li>
+        <li>Starvig</li>
+        <li class="odd">Ramen</li>
+        <li>Chicken Rice</li>
+        <li class="odd">Sausage, ConeDog</li>
+    </ul>
+</body>
+<script>
+    var oddElements = document.getElementsByClassName("odd")
+    console.log(oddElements.length);
+
+    for(let element in oddElements){
+        console.log(element);
+        oddElements[element].style.color = "violet";
+
+        if(element == 2)
+            break;
+    }
+
+    var oddElements2 = document.getElementsByClassName("odd first")
+    // 1. odd 또는 first 중 하나라도 있는 애 전부
+    // 2. odd와 first가 둘 다 있되 순서대로 있는 애
+    // 3. odd와 first가 둘 다 있되 순서는 상관없이
+    console.log(oddElements2);
+    oddElements[0].style.color = "blue";
+    oddElements[0].textContent = "너도굶어";
+
+    
+
+</script>
+</html>

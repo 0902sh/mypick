@@ -1,0 +1,22 @@
+package com.mypick.controller;
+
+import com.mypick.entity.User;
+import com.mypick.service.UserService;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/users")
+public class UserController {
+
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @GetMapping("")
+    public User createUser(@RequestBody User user) {
+    	System.out.println("Create User Called");
+    	return userService.createUser(user);
+    }
+}

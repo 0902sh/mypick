@@ -1,0 +1,36 @@
+/*
+* {
+    color: deeppink;
+}
+*/
+label {
+    display: inline-block;
+    width: 40px;
+}
+
+.input-style {
+    width: 350px;
+    font-size: 20px;
+}
+
+.table {
+    width: 200px;
+    height: 300px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th {
+    font-size: 22px;
+    font-family: Verdana, 'Lucida Console', 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+tr:hover {
+    background-color: aquamarine;
+}
+
+td:hover {
+    background-color: red;
+}
